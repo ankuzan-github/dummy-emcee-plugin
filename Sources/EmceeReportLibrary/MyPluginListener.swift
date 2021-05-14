@@ -12,14 +12,14 @@ import EmceeLogging
 
 public class MyPluginListener: DefaultBusListener {
     
-    let logger: ContextualLogger
+    var logger: ContextualLogger?
     
-    public init(logger: ContextualLogger) {
+    public func setLogger(_ logger: ContextualLogger?) {
         self.logger = logger
-        logger.info("123123123 - plugin instantiated")
     }
     
     public override func runnerEvent(_ event: RunnerEvent) {
+        logger?.info("123123123 - event started")
         let context = event.testContext        
         switch event {
         case .willRun(let testEntries, let testContext):
@@ -27,10 +27,10 @@ public class MyPluginListener: DefaultBusListener {
         case .didRun(let testEntryResults, let testContext):
             break
         case .testStarted(let testEntry, let testContext):
-            logger.info("123123123 - test started: \(testEntry.testName.stringValue)")
+            logger?.debug("123123123 - test started: \(testEntry.testName.stringValue)")
             break
         case .testFinished(let testEntry, let succeeded, let testContext):
-            logger.info("123123123 - test finished: \(testEntry.testName.stringValue)")
+            logger?.debug("123123123 - test finished: \(testEntry.testName.stringValue)")
             
             break
         }

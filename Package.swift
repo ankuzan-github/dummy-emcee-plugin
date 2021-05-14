@@ -1,3 +1,5 @@
+// swift-tools-version:5.3
+
 import PackageDescription
 
 let package = Package(
@@ -13,7 +15,7 @@ let package = Package(
             targets: ["EmceeReportLibrary"]),
     ],
     dependencies: [
-        .package(name: "EmceeTestRunner", url: "https://github.com/avito-tech/Emcee", .branch("master"))
+        .package(name: "EmceeTestRunner", url: "https://github.com/avito-tech/Emcee", .revision("1cdf02a533bc13fa35a0e8b74f6d78f5e2f368bb"))
     ],
     targets: [
         .target(
